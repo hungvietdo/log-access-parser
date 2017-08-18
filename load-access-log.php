@@ -17,7 +17,9 @@ foreach ($lines as $line) {
   $pagePath = explode(" ",$entry->request)[1];
   $response = $client->request('GET',$pagePath);
   $code = $response->getStatusCode();
-  print_r($code." ".$pagePath."\n");
+  $log = print_r($code." ".$pagePath."\n", true);
+  file_put_contents('/tmp/loadtest-access-log.log', $log, FILE_APPEND);
+  echo $log;
 }
 
 

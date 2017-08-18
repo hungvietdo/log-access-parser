@@ -7,5 +7,5 @@ echo "Spawning $process processes"
 for i in {1..$process}
 do
     $PHP load-access-log.php &
-    sleep 10
+    sleep 1
 done

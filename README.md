@@ -10,4 +10,4 @@
 - Modify $base_uri variable
 - Mofify setFormat when needed (Detail Info can be found in: https://github.com/kassner/log-parser)
 ##### Multi processes 
-- Take a look at multithreads.sh script
+- Take a look at multithreads.sh and multiprocess.php scripts
