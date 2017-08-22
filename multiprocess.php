@@ -1,6 +1,6 @@
 <?php
-//Be careful with fork processes. You  have to manually kill (pkill) php processes.
-//Processes is growing exponetially by 2^n
+//Be careful with fork() process. You  have to manually kill (pkill) php processes.
+//Processes are growing exponetially by 2^n
 //Do not set n>10 since 2^10 - 1 = 1023 processes
 $n = 3;
 
