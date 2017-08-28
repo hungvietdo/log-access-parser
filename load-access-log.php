@@ -12,7 +12,11 @@ $lines = file($accesslogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 $client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
 
-foreach ($lines as $line) {
+
+do {
+  shuffle($lines);
+  $line = array_pop($lines);
+
   $entry = $parser->parse($line);
   $pagePath = explode(" ",$entry->request)[1];
   try {
@@ -24,6 +28,6 @@ foreach ($lines as $line) {
   } catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
   }
-}
+} while (!empty($lines));
 
 
