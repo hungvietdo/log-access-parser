@@ -20,8 +20,8 @@
 - To run: `php multiprocess.php`
 
 ##### View current log
-- tail -f /tmp/loadtest-access-log.log
+- See the current progress: `tail -f /tmp/loadtest-access-log.log`
 
 ##### Kill processes
-- ps -ef | grep load-access-log.php
-- pkill -f load-access-log.php
+- view processes: `ps -ef | grep load-access-log.php`
+- kill these processes: `pkill -f load-access-log.php`
