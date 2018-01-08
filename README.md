@@ -8,8 +8,8 @@
 ##### Script (access-log-file.php)
 
 ###### Required:
-- Modify access-log-file location
-- Modify $base_uri variable (Facade setup of this local site must point to the API that you want to do load test)
+- Modify `$accesslogFile` variable for log path location
+- Modify `$base_uri` variable (Facade setup of this local site must point to the API that you want to do load test)
 
 ###### Optional:
 - Modify setFormat when needed (Detail Info can be found in: https://github.com/kassner/log-parser)
