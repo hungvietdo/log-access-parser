@@ -14,8 +14,9 @@
 ###### Optional:
 - Modify setFormat when needed (Detail Info can be found in: https://github.com/kassner/log-parser)
 
-##### Multi processes 
-- Take a look at multithreads.sh and multiprocess.php scripts. Current setup is `n=3` ~ 6 processes.
+##### Execute script in multi-processes 
+- Take a look at multithreads.sh and multiprocess.php scripts. 
+- Current setup is `n=3` ~ 6 processes.
 - To run: `php multiprocess.php`
 
 ##### View current log
