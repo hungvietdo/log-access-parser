@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $parser = new \Kassner\LogParser\LogParser();
 
-$accesslogFile = 'www.equipmenttrader.com.access.log.1';
+$accesslogFile = 'www.equipmenttrader.com.access.log';
 $base_uri = 'http://cloud.equip.local';
 
 
