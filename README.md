@@ -5,6 +5,9 @@
 - There are 20000 rows in www[.]commercialtrucktrader[.]com[.]access[.]log file
 
 #### How To Run
+Installation: `composer install`
+
+#### How To Run
 ##### Script (access-log-file.php)
 
 ###### Required:
