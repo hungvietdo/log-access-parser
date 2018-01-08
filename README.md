@@ -7,11 +7,11 @@
 #### How To Run
 ##### Script (access-log-file.php)
 
-######Required:
+###### Required:
 - Modify access-log-file location
 - Modify $base_uri variable (Facade setup of this local site must point to the API that you want to do load test)
 
-######Optional:
+###### Optional:
 - Modify setFormat when needed (Detail Info can be found in: https://github.com/kassner/log-parser)
 
 ##### Multi processes 
