@@ -2,14 +2,14 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $parser = new \Kassner\LogParser\LogParser();
 
-$accesslogFile = 'www.equipmenttrader.com.access.log';
-$base_uri = 'http://cloud.equip.local';
+$accesslogFile = 'www.commercialtrucktrader.com.access.log';
+$base_uri = 'https://responsive.commercialtrucktrader.com';
 
 $parser->setFormat('%h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
 
 $lines = file($accesslogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-$client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
+$client = new GuzzleHttp\Client(['base_uri' => $base_uri, 'verify' => false]);
 
 do {
   shuffle($lines);
