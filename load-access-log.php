@@ -5,7 +5,7 @@ $parser = new \Kassner\LogParser\LogParser();
 $accesslogFile = 'www.commercialtrucktrader.com.access.log';
 $base_uri = 'https://responsive.commercialtrucktrader.com';
 
-$parser->setFormat('%h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
+$parser->setFormat('%{testing}i %h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
 
 $lines = file($accesslogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -27,6 +27,10 @@ do {
     continue;
   }
 
+  if (checkToIgnore($pagePath)) {
+    continue;
+  }
+
   $entry = $parser->parse($line);
   $pagePath = explode(" ",$entry->request)[1];
 
@@ -41,4 +45,16 @@ do {
   }
 } while (!empty($lines));
 
+function checkToIgnore($pagePath) {
+  $ignoreTerms = ['Gettiledata', 'favicon', 'upfitMake', 'upfitCategory'];
+
+  foreach ($ignoreTerms as $term) {
+    $pos = strpos($pagePath, $term);
+    if ($pos !== false) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
