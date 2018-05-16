@@ -2,14 +2,22 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $parser = new \Kassner\LogParser\LogParser();
 
+//Please copy access_log to current folder
 $accesslogFile = 'www.commercialtrucktrader.com.access.log';
-$base_uri = 'https://responsive.commercialtrucktrader.com';
 
-$parser->setFormat('%{testing}i %h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
+//Update webserver that you are going to test
+$baseUri = 'https://responsive.commercialtrucktrader.com';
+
+//Logfile Path
+$resultLogFilePath = '/tmp/loadtest-access-log.log';
+
+//-------------------------------------- Read log and run -----------------------------------------------
+
+$parser->setFormat('%{createTime}i %h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
 
 $lines = file($accesslogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-$client = new GuzzleHttp\Client(['base_uri' => $base_uri, 'verify' => false]);
+$client = new GuzzleHttp\Client(['base_uri' => $baseUri, 'verify' => false]);
 
 do {
   shuffle($lines);
@@ -38,13 +46,18 @@ do {
     $response = $client->request('GET',$pagePath);
     $code = $response->getStatusCode();
     $log = print_r($code." ".$pagePath."\n", true);
-    file_put_contents('/tmp/loadtest-access-log.log', $log, FILE_APPEND);
+    file_put_contents($resultLogFilePath, $log, FILE_APPEND);
   echo $log;
   } catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
   }
 } while (!empty($lines));
 
+/**
+ * This function is to check if a url is valid for stress test.
+ *
+ * @param string $pagePath the url that being requested
+ */
 function checkToIgnore($pagePath) {
   $ignoreTerms = ['Gettiledata', 'favicon', 'upfitMake', 'upfitCategory'];
 
