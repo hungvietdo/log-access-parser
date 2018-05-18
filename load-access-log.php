@@ -59,7 +59,7 @@ do {
  * @param string $pagePath the url that being requested
  */
 function checkToIgnore($pagePath) {
-  $ignoreTerms = ['Gettiledata', 'favicon', 'upfitMake', 'upfitCategory'];
+  $ignoreTerms = ['Gettiledata', 'favicon'];
 
   foreach ($ignoreTerms as $term) {
     $pos = strpos($pagePath, $term);

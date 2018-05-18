@@ -7,6 +7,7 @@
 #### Installation
 
 `composer install`
+`NEW_RELIC_APP_NAME="testing truck - hung" NERELIC_ENABLED=true APIGEE_ENV=prod PORT=9018 nodemon server.js`
 
 #### How To Run
 ##### Script (access-log-file.php)
