@@ -21,8 +21,9 @@
 
 ##### Execute script in multi-processes 
 - Take a look at multithreads.sh and multiprocess.php scripts. 
-- Current setup is `n=3` ~ 6 processes.
-- To run: `php multiprocess.php`
+- Can pass the nth level through command line
+- Default setup is `n=3` ~ 6 processes if nothing is passed.
+- To run: `php multiprocess.php <nth level>`
 
 ##### View current log
 - See the current progress: `tail -f /tmp/loadtest-access-log.log`

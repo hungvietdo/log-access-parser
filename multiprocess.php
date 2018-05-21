@@ -4,7 +4,12 @@
 //Do not set n>10 since 2^10 - 1 = 1023 processes
 $n = 3;
 
-if (isset($argv[1]) && !is_null($argv[1]) && !empty($argv[1])) {
+if (
+    isset($argv[1]) && 
+    !is_null($argv[1]) && 
+    !empty($argv[1]) && 
+    is_int($argv[1])
+) {
     $n = $argv[1];
     print '$n = '.$n;
 }
