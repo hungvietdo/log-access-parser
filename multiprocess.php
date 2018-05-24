@@ -8,11 +8,17 @@ if (
     isset($argv[1]) && 
     !is_null($argv[1]) && 
     !empty($argv[1]) && 
-    is_int($argv[1])
+    is_int((int)$argv[1])
 ) {
     $n = $argv[1];
     print '$n = '.$n;
 }
+
+//print_r(isset($argv[1]) . PHP_EOL);
+//print_r(!is_null($argv[1]) . PHP_EOL);
+//print_r(!empty($argv[1]) . PHP_EOL);
+//print_r(is_int((int)$argv[1]) . PHP_EOL);
+//print_r($n);exit;
 
 if (! function_exists('pcntl_fork')) die('PCNTL functions not available on this PHP installation');
 
