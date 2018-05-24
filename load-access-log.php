@@ -2,18 +2,28 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $parser = new \Kassner\LogParser\LogParser();
 
+
+if ($argv[1] == 'truck') {
 //Please copy access_log to current folder
 $accesslogFile = 'www.commercialtrucktrader.com.access.log';
 
 //Update webserver that you are going to test
 $baseUri = 'https://responsive.commercialtrucktrader.com';
+} else {
+//Please copy access_log to current folder
+$accesslogFile = 'www.equipmenttrader.com.access.log';
+
+//Update webserver that you are going to test
+$baseUri = 'https://responsive.equipmenttrader.com';
+
+}
 
 //Logfile Path
 $resultLogFilePath = '/tmp/loadtest-access-log.log';
 
 //-------------------------------------- Read log and run -----------------------------------------------
 
-$parser->setFormat('%{createTime}i %h %v %u %a - - -  - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
+$parser->setFormat('%{createTime}i %h %v %u %a - - - %{version}i - - %t "%r" %>s %I %T "%{Referer}i" "%{User-Agent}i"');
 
 $lines = file($accesslogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -59,7 +69,7 @@ do {
  * @param string $pagePath the url that being requested
  */
 function checkToIgnore($pagePath) {
-  $ignoreTerms = ['Gettiledata', 'favicon'];
+  $ignoreTerms = ['Gettiledata', 'favicon', '/myt/'];
 
   foreach ($ignoreTerms as $term) {
     $pos = strpos($pagePath, $term);

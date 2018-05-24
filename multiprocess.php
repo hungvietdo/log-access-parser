@@ -14,6 +14,10 @@ if (
     print '$n = '.$n;
 }
 
+//Truck or Equipment
+
+$siteForTesting = $argv[2];
+
 //print_r(isset($argv[1]) . PHP_EOL);
 //print_r(!is_null($argv[1]) . PHP_EOL);
 //print_r(!empty($argv[1]) . PHP_EOL);
@@ -32,7 +36,7 @@ for ($x = 1; $x < $n; $x++) {
       case 0:
          // @child: Include() misbehaving code here
          print "FORK: Child #{$x} preparing to nuke...\n";
-         shell_exec("php load-access-log.php > /dev/null 2>&1 &");
+         shell_exec("php load-access-log.php  {$siteForTesting}> /dev/null 2>&1 &");
 
          break;
 
@@ -40,7 +44,7 @@ for ($x = 1; $x < $n; $x++) {
          // @parent
          print "FORK: Parent, letting the child run amok...\n";
 
-         shell_exec("php load-access-log.php > /dev/null 2>&1 &");
+         shell_exec("php load-access-log.php {$siteForTesting}> /dev/null 2>&1 &");
          pcntl_waitpid($pid, $status);
 
          break;
