@@ -69,7 +69,11 @@ do {
  * @param string $pagePath the url that being requested
  */
 function checkToIgnore($pagePath) {
-  $ignoreTerms = ['Gettiledata', 'favicon', '/myt/'];
+  $ignoreTerms = ['Gettiledata', 'favicon', '/myt/', 'fonts'];
+
+  if(preg_match('/[a-z]{1,}\.(css|js)/', $pagePath)) {
+    return true;
+  }
 
   foreach ($ignoreTerms as $term) {
     $pos = strpos($pagePath, $term);
